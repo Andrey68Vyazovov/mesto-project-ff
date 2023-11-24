@@ -1,32 +1,40 @@
-const initialCards = [
+import tambovImage from '../images/tambov.jpg';
+import petersburgImage from '../images/petersburg.jpg';
+import elbrusImage from '../images/elbrus.jpg';
+import gorskImage from '../images/5gorsk.jpg';
+import altaiImage from '../images/altai.jpg';
+import abhaziyaImage from '../images/abhaziya.jpg';
+
+
+export const initialCards = [
     {
       name: "Тамбов",
-      link: "../images/tambov.jpg",
+      link: tambovImage,
       alt: "Вид на высокую колокольню в центре Тамбова."
     },
     {
       name: "Санкт-Петербург",
-      link: "../images/petersburg.jpg",
+      link: petersburgImage,
       alt: "Стрелка Васильевского острова. Здание биржи."
     },
     {
       name: "Эльбрус",
-      link: "../images/elbrus.jpg",
+      link: elbrusImage,
       alt: "Вид на Эльбрус с севера."
     },
     {
       name: "Пятигорск",
-      link: "../images/5gorsk.jpg",
+      link: gorskImage,
       alt: "Вид на Пятигорск с горы Машук."
     },
     {
       name: "Алтай",
-      link: "../images/altai.jpg",
+      link: altaiImage,
       alt: "Горный Алтай. Альпийские луга."
     },
     {
       name: "Абхазия",
-      link: "../images/abhaziya.jpg",
+      link: abhaziyaImage,
       alt: "Абхазия. Гагры."
     },
 ];
