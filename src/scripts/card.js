@@ -15,7 +15,9 @@ function createCard(card, deleteFunction, likeFunction, openImageFunction){
   cardElement.querySelector(".card__image").alt = card.alt;
   cardElement
     .querySelector(".card__image")
-    .addEventListener("click", openImageFunction);
+    .addEventListener("click", () => {
+      openImageFunction(card.link, card.alt, card.name);
+    });
   return cardElement;
 };
 // @todo: Функция лайка карточки
@@ -27,10 +29,5 @@ function deleteCard(evt){
   const parent = evt.target.closest(".card");
   parent.remove();
 };
-// @todo: Вывести карточки на страницу
-function renderCard(card, placesList, likeCard, deleteCard, openImage, renderPositionCard="end") {
-  const cardElement = createCard(card, deleteCard, likeCard, openImage);
-  return (renderPositionCard === "end")?placesList.append(cardElement):placesList.prepend(cardElement);
-};
 // @todo: Экспорт функций рендера, лайка и удаления карточки
-export { renderCard, likeCard, deleteCard };
+export { createCard, likeCard, deleteCard };

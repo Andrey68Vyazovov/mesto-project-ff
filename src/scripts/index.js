@@ -1,7 +1,7 @@
 // @todo: import
 import "../pages/index.css";
 import { initialCards } from "./cards.js";
-import { renderCard, likeCard, deleteCard } from "./card.js";
+import { createCard, likeCard, deleteCard } from "./card.js";
 import { closeModal, openModal, closeModalOverlay } from "./modal.js";
 
 // @todo: constants
@@ -16,13 +16,14 @@ const popupTypeNewCard = document.querySelector(".popup_type_new-card");
 const formNewPlace = document.forms["new-place"];
 const popupTypeImage = document.querySelector(".popup_type_image");
 const popupImage = document.querySelector(".popup__image");
-const popupCaption = document.querySelector(".popup__caption");
+const popupImageCaption = document.querySelector(".popup__caption");
+const popups = document.querySelectorAll(".popup");
 
 // @todo: functions
-function openPopupImage(evt){
-  popupImage.src = evt.target.src;
-  popupImage.alt = evt.target.alt;
-  popupCaption.textContent = evt.target.parentNode.textContent.trim();
+function openPopupImage(imageSrc, imageAlt, imageTitle){
+  popupImage.src = imageSrc;
+  popupImage.alt = imageAlt;
+  popupImageCaption.textContent = imageTitle;
   openModal(popupTypeImage);
 };
 
@@ -36,6 +37,11 @@ function handleProfileFormSubmit(evt){
 function fillProfilePopup(form, name, description){
   form.elements.name.value = name;
   form.elements.description.value = description;
+};
+
+function renderCard(card, placesList, likeCard, deleteCard, openImage, renderPositionCard="end") {
+  const cardElement = createCard(card, deleteCard, likeCard, openImage);
+  return (renderPositionCard === "end")?placesList.append(cardElement):placesList.prepend(cardElement);
 };
 
 // @todo: listeners
@@ -74,11 +80,13 @@ popupTypeNewCard.addEventListener("click", function(evt){
   closeModalOverlay(evt);
 });
 // EventListener: close a popup
-document.addEventListener("click", function(evt){
-  if (evt.target.classList.contains("popup__close")) {
-    closeModal(evt.target.parentNode.parentNode);
-  }
+popups.forEach((popup) => {
+  popup.addEventListener("click", function(evt){
+    if (evt.target.classList.contains("popup__close"))
+    closeModal(popup);
+  });
 });
+
 
 // @todo: initialCards
 initialCards.map(function(card) {
