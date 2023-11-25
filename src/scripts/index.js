@@ -1,12 +1,11 @@
-// import
+// @todo: import
 import "../pages/index.css";
 import { initialCards } from "./cards.js";
 import { renderCard, likeCard, deleteCard } from "./card.js";
 import { closeModal, openModal, closeModalOverlay } from "./modal.js";
 
-// constants
+// @todo: constants
 const placesList = document.querySelector(".places__list");
-
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupTypeEdit = document.querySelector(".popup_type_edit");
 const profileTitle = document.querySelector(".profile__title");
@@ -19,7 +18,7 @@ const popupTypeImage = document.querySelector(".popup_type_image");
 const popupImage = document.querySelector(".popup__image");
 const popupCaption = document.querySelector(".popup__caption");
 
-// functions
+// @todo: functions
 function openPopupImage(evt){
   popupImage.src = evt.target.src;
   popupImage.alt = evt.target.alt;
@@ -39,26 +38,27 @@ function fillProfilePopup(form, name, description){
   form.elements.description.value = description;
 };
 
-// listeners
+// @todo: listeners
+// EventListener: close the popupTypeImage overlay
 popupTypeImage.addEventListener("click", function(evt){
   closeModalOverlay(evt);
 });
-
+// EventListener: open the popupTypeEdit
 profileEditButton.addEventListener("click", function(){
   fillProfilePopup(formEditProfile, profileTitle.textContent, profileDescription.textContent);
   openModal(popupTypeEdit);
 });
-
+// EventListener: submit the formEditProfile
 formEditProfile.addEventListener("submit", handleProfileFormSubmit);
-
+// EventListener: close the popupTypeEdit overlay
 popupTypeEdit.addEventListener("click", function(evt){ 
   closeModalOverlay(evt);
 });
-
+// EventListener: open the popupTypeNewCard
 profileAddButton.addEventListener("click", function(){
   openModal(popupTypeNewCard);
 });
-
+// EventListener: submit the formNewPlace
 formNewPlace.addEventListener("submit", function(evt){
   evt.preventDefault();
   const name = formNewPlace.elements["place-name"].value;
@@ -69,18 +69,18 @@ formNewPlace.addEventListener("submit", function(evt){
   closeModal(popupTypeNewCard);
   formNewPlace.reset();
 });
-
+// EventListener: close the popupTypeNewCard overlay
 popupTypeNewCard.addEventListener("click", function(evt){
   closeModalOverlay(evt);
 });
-
+// EventListener: close a popup
 document.addEventListener("click", function(evt){
   if (evt.target.classList.contains("popup__close")) {
     closeModal(evt.target.parentNode.parentNode);
   }
 });
 
-// initialCards
+// @todo: initialCards
 initialCards.map(function(card) {
   return renderCard(card, placesList, likeCard, deleteCard, openPopupImage);});
 
