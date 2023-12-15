@@ -18,6 +18,13 @@
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
+/* стиль неактивной кнопки */
+.popup__button_disabled {
+  background-color: #FFFFFF;
+  color: #C4C4C4;
+  border: solid 1px #C4C4C4;
+  pointer-events: none;
+}
 
 @media screen and (max-width: 568px) {
   .popup__button {
