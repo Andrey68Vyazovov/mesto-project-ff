@@ -49,7 +49,7 @@ function likeCard(evt, cardId){
     likeIt(cardId)
       .then((likedCard) => {
         evt.target.classList.add("card__like-button_is-active");
-        currentLikes.textContent = likedCard.likes.length; // выяснить структуру объекта updatedCard
+        currentLikes.textContent = likedCard.likes.length;
       })
       .catch(err => console.log(err));
   }
