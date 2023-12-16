@@ -1,0 +1,22 @@
+.profile__image-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image-icon {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.6s;
+  background: rgba(0, 0, 0, 0.5) url(../../../images/vector.svg) no-repeat 52px center;
+}
+
+.profile__image-box:hover .profile__image-icon {
+  visibility: initial;
+  opacity: 1;
+  transition: visibility 0.3s, opacity 0.6s;
+}
