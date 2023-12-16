@@ -1,6 +1,6 @@
 // @todo: import
 import "../pages/index.css";
-import { createCard, likeCard, deleteCard } from "./card.js";
+import { createCard, likeCard, openConfirmationForm } from "./card.js";
 import { closeModal, openModal, closeModalOverlay } from "./modal.js";
 import { clearValidation, enableValidation } from "./validation.js";
 import { getInitialData, postNewCard, patchAvatar, patchUserProfile, deleteCardServer } from "./api.js";
@@ -105,7 +105,7 @@ const handleNewCardFormSubmit = (evt) => {
   procedureSave(true, formNewPlace.querySelector(".popup__button"));
   postNewCard(name, link)
     .then((newCard) => {
-      renderCard(newCard, placesList, likeCard, deleteCard, openPopupImage, "begin", userId);
+      renderCard(newCard, placesList, likeCard, openConfirmationForm, openPopupImage, "begin", userId);
       closeModal(popupTypeNewCard);
       formNewPlace.reset();
       clearValidation(formNewPlace, validationConfig);
@@ -129,7 +129,7 @@ const renderCard = (card, placesList, likeCard, deleteCard, openImage, renderPos
 // функция добавления всех карточек на страницу
 const renderCards = (initialCards, userId) => {
   initialCards.forEach((card) => {
-    renderCard(card, placesList, likeCard, deleteCard, openPopupImage, "begin", userId);
+    renderCard(card, placesList, likeCard, openConfirmationForm, openPopupImage, "begin", userId);
   });
 };
 

@@ -55,9 +55,9 @@ function likeCard(evt, cardId){
   }
 };
 
-function deleteCard(cardId){
+function openConfirmationForm(cardId){
   openModal(popupConfirm);
   popupConfirm.dataset.cardId = cardId;
 };
 
-export { createCard, likeCard, deleteCard };
+export { createCard, likeCard, openConfirmationForm };
