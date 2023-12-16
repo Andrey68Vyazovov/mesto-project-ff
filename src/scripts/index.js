@@ -105,7 +105,7 @@ const handleNewCardFormSubmit = (evt) => {
   procedureSave(true, formNewPlace.querySelector(".popup__button"));
   postNewCard(name, link)
     .then((newCard) => {
-      renderCard(newCard, placesList, likeCard, openConfirmationForm, openPopupImage, "begin", userId);
+      renderCard(newCard, placesList, likeCard, openConfirmationForm, openPopupImage,"end", userId);
       closeModal(popupTypeNewCard);
       formNewPlace.reset();
       clearValidation(formNewPlace, validationConfig);
@@ -123,7 +123,7 @@ const fillProfilePopup = (form, name, description) => {
 // функция добавления карточки на страницу(DOM)
 const renderCard = (card, placesList, likeCard, deleteCard, openImage, renderPositionCard="end", userId) => {
   const cardElement = createCard(card, deleteCard, likeCard, openImage, userId);
-  return (renderPositionCard === "end")?placesList.append(cardElement):placesList.prepend(cardElement);
+  return (renderPositionCard === "end")?placesList.prepend(cardElement):placesList.append(cardElement);
 };
 
 // функция добавления всех карточек на страницу
